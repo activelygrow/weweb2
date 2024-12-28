@@ -38,7 +38,7 @@ export default {
           },
         },
       },
-      bindable: true,
+      bindable: false, // Prevent binding of the entire items array to avoid crashes
       defaultValue: [
         { text: "This is text", type: "text" },
         { text: "This is a link", type: "link" },
@@ -73,7 +73,7 @@ export default {
       label: {
         en: "Font Size",
       },
-      type: "String", // Allows text input for values like "1rem" or "10px"
+      type: "String", // Text input for values like "16px", "1rem"
       defaultValue: "16px",
       bindable: true,
     },
@@ -81,7 +81,7 @@ export default {
       label: {
         en: "Button Vertical Padding",
       },
-      type: "String", // Allows text input
+      type: "String", // Text input
       defaultValue: "8px",
       bindable: true,
     },
@@ -89,7 +89,7 @@ export default {
       label: {
         en: "Button Horizontal Padding",
       },
-      type: "String", // Allows text input
+      type: "String", // Text input
       defaultValue: "16px",
       bindable: true,
     },
