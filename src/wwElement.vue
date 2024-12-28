@@ -1,9 +1,12 @@
 <template>
   <div class="my-element">
-    <p v-for="(item, index) in content.items" :key="index" class="inline-element">
+    <span v-for="(item, index) in content.items" :key="index" class="inline-element">
+      <!-- Handle text type -->
       <template v-if="item.type === 'text'">
         {{ item.text }}
       </template>
+
+      <!-- Handle link type -->
       <template v-else-if="item.type === 'link'">
         <a
           href="#"
@@ -14,16 +17,21 @@
           {{ item.text }}
         </a>
       </template>
+
+      <!-- Handle button type -->
       <template v-else-if="item.type === 'button'">
         <button
           type="button"
-          :style="{ backgroundColor: content.buttonBgColor, color: content.buttonTextColor }"
+          :style="{
+            backgroundColor: content.buttonBgColor,
+            color: content.buttonTextColor,
+          }"
           class="button"
         >
           {{ item.text }}
         </button>
       </template>
-    </p>
+    </span>
   </div>
 </template>
 
@@ -42,10 +50,10 @@ export default {
 .my-element {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  gap: 8px; /* Space between inline elements */
 
   .inline-element {
-    display: inline;
+    display: inline-block;
     margin-right: 8px;
     font-size: 16px;
   }
@@ -69,7 +77,7 @@ export default {
   }
 
   .button:hover {
-    background-color: darken($buttonBgColor, 10%);
+    filter: brightness(90%);
   }
 }
 </style>
