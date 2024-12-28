@@ -4,7 +4,11 @@
       <template v-for="(item, index) in content.items || []" :key="index">
         <!-- Handle text type -->
         <template v-if="item.type === 'text'">
-          <span>{{ item.text }}</span>
+          <span
+            :style="{ color: validateStyle(content.textColor, '#000000') }"
+          >
+            {{ item.text }}
+          </span>
         </template>
 
         <!-- Handle link type -->
@@ -22,11 +26,6 @@
             {{ item.text }}
           </a>
         </template>
-
-        <!-- Add space after the current element unless the next element is a period -->
-        <!-- <template v-if="index < content.items.length - 1 && content.items[index + 1].text !== '.'">  -->
-           <!--<span>&nbsp;</span> -->
-        <!-- </template>-->
       </template>
     </span>
   </div>
