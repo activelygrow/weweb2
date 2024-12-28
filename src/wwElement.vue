@@ -4,12 +4,7 @@
       v-for="(item, index) in content.items"
       :key="index"
       class="inline-element"
-      :style="{
-        fontWeight: content.fontWeight || 400,
-        fontSize: (content.fontSize || 16) + 'px',
-        letterSpacing: (content.letterSpacing || 0) + 'px',
-        lineHeight: content.lineHeight || 1.5,
-      }"
+      :style="{ fontSize: content.fontSize + 'px' }"
     >
       <!-- Handle text type -->
       <template v-if="item.type === 'text'">
@@ -20,10 +15,7 @@
       <template v-else-if="item.type === 'link'">
         <a
           href="#"
-          :style="{
-            color: content.linkColor || '#007BFF',
-            textUnderlineOffset: (content.underlineDistance || 2) + 'px',
-          }"
+          :style="{ color: content.linkColor }"
           class="link"
           @click.prevent
         >
@@ -36,13 +28,9 @@
         <button
           type="button"
           :style="{
-            backgroundColor: content.buttonBgColor || '#F23636',
-            color: content.buttonTextColor || '#FFFFFF',
-            padding:
-              (content.buttonPadding.vertical || 8) +
-              'px ' +
-              (content.buttonPadding.horizontal || 16) +
-              'px',
+            backgroundColor: content.buttonBgColor,
+            color: content.buttonTextColor,
+            padding: content.buttonPaddingVertical + 'px ' + content.buttonPaddingHorizontal + 'px',
           }"
           class="button"
         >
