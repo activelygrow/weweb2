@@ -1,42 +1,34 @@
 <template>
   <div class="my-element">
-    <span
-      v-for="(item, index) in content.items || []"
-      :key="index"
-      class="inline-element"
-      :style="{ 
-        fontSize: validateStyle(content.fontSize, '16px'), 
-        fontWeight: validateStyle(content.fontWeight, '400') 
-      }"
-    >
-      <!-- Handle text type -->
-      <template v-if="item.type === 'text'">
-        <span>{{ item.text }}</span>
-      </template>
+    <span class="inline-paragraph">
+      <template v-for="(item, index) in content.items || []">
+        <!-- Handle text type -->
+        <template v-if="item.type === 'text'">
+          <span :key="'text-' + index">{{ item.text }}</span>
+        </template>
 
-      <!-- Handle link type -->
-      <template v-else-if="item.type === 'link'">
-        <a
-          :href="validateStyle(item.linkTarget, '#')"
-          :style="{ 
-            color: validateStyle(content.linkColor, '#007BFF'), 
-            textUnderlineOffset: validateStyle(content.underlineDistance, '2px') 
-          }"
-          class="link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {{ item.text }}
-        </a>
-      </template>
-    </span>
+        <!-- Handle link type -->
+        <template v-else-if="item.type === 'link'">
+          <a
+            :key="'link-' + index"
+            :href="validateStyle(item.linkTarget, '#')"
+            :style="{ 
+              color: validateStyle(content.linkColor, '#007BFF'), 
+              textUnderlineOffset: validateStyle(content.underlineDistance, '2px') 
+            }"
+            class="link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ item.text }}
+          </a>
+        </template>
 
-    <!-- Adjust for periods to remove space before them -->
-    <span
-      v-if="index === content.items.length - 1 && item.text === '.'"
-      class="inline-period"
-    >
-      .
+        <!-- Add period directly after text or link without spaces -->
+        <template v-if="index < content.items.length - 1 && content.items[index + 1].text === '.'">
+          <span :key="'period-fix-' + index"></span>
+        </template>
+      </template>
     </span>
   </div>
 </template>
@@ -61,38 +53,27 @@ export default {
 <style lang="scss" scoped>
 .my-element {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0; /* Ensure no unwanted spacing between elements */
+}
 
-  .inline-element {
-    display: inline; /* Ensure elements flow inline */
-    margin-right: 0; /* Remove additional margins */
-  }
+.inline-paragraph {
+  display: inline; /* Ensure text and links flow as one continuous line */
+  white-space: normal; /* Allow wrapping within a paragraph */
+  font-size: inherit;
+  line-height: inherit;
+}
 
-  .inline-period {
-    margin-left: -0.1em; /* Adjust spacing to align period tightly */
-    display: inline; /* Maintain inline behavior */
-  }
+.inline-element {
+  display: inline; /* Ensure elements flow inline */
+  margin-right: 0; /* Remove additional margins */
+}
 
-  .link {
-    text-decoration: none;
-    cursor: pointer;
-    transition: text-decoration 0.2s ease;
-  }
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: text-decoration 0.2s ease;
+}
 
-  .link:hover {
-    text-decoration: underline;
-  }
-
-  .button {
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-
-  .button:hover {
-    filter: brightness(90%);
-  }
+.link:hover {
+  text-decoration: underline;
 }
 </style>
