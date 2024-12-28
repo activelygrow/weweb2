@@ -1,106 +1,75 @@
 <template>
-    <div class="text-container" :style="{ fontSize: fontSize }">
-      <!-- Loop through the items array -->
-      <template v-for="(item, index) in items" :key="index">
-        <!-- Render plain text -->
-        <span
-          v-if="item.type === 'text'"
-          :style="{ color: textColor }"
-        >
-          {{ item.text }}
-        </span>
-  
-        <!-- Render link -->
+  <div class="my-element">
+    <p v-for="(item, index) in content.items" :key="index" class="inline-element">
+      <template v-if="item.type === 'text'">
+        {{ item.text }}
+      </template>
+      <template v-else-if="item.type === 'link'">
         <a
-          v-else-if="item.type === 'link'"
           href="#"
-          :style="{ color: linkColor }"
-          @click.prevent="onLinkClick(item.text)"
+          :style="{ color: content.linkColor }"
+          class="link"
+          @click.prevent
         >
           {{ item.text }}
         </a>
-  
-        <!-- Render button -->
+      </template>
+      <template v-else-if="item.type === 'button'">
         <button
-          v-else-if="item.type === 'button'"
-          :style="{ backgroundColor: buttonBackgroundColor, color: buttonTextColor }"
-          @click="onButtonClick(item.text)"
+          type="button"
+          :style="{ backgroundColor: content.buttonBgColor, color: content.buttonTextColor }"
+          class="button"
         >
           {{ item.text }}
         </button>
       </template>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      items: {
-        type: Array,
-        default: () => [],
-      },
-      textColor: {
-        type: String,
-        default: "#000000", // Default text color
-      },
-      linkColor: {
-        type: String,
-        default: "#007bff", // Default link color
-      },
-      buttonBackgroundColor: {
-        type: String,
-        default: "#f0f0f0", // Default button background color
-      },
-      buttonTextColor: {
-        type: String,
-        default: "#000000", // Default button text color
-      },
-      fontSize: {
-        type: String,
-        default: "16px", // Default font size
-      },
+    </p>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    content: {
+      type: Object,
+      required: true,
     },
-    methods: {
-      // Handle link click
-      onLinkClick(text) {
-        console.log(`Link clicked: ${text}`);
-        this.$emit("link-clicked", text); // Emit event for workflows
-      },
-  
-      // Handle button click
-      onButtonClick(text) {
-        console.log(`Button clicked: ${text}`);
-        this.$emit("button-clicked", text); // Emit event for workflows
-      },
-    },
-  };
-  </script>
-  
-  <style>
-  /* Style for the text container */
-  .text-container {
-    display: inline; /* Inline flow for text and elements */
-    white-space: normal; /* Allow wrapping */
-    line-height: 1.5; /* Consistent spacing */
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.my-element {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .inline-element {
+    display: inline;
+    margin-right: 8px;
+    font-size: 16px;
   }
-  
-  /* Link hover effect */
-  .text-container a:hover {
-    text-decoration: underline; /* Underline on hover */
-    text-underline-offset: 4px; /* Space underline further */
-  }
-  
-  /* Button hover effect */
-  .text-container button {
-    display: inline; /* Inline button */
-    padding: 2px 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+  .link {
+    text-decoration: none;
     cursor: pointer;
+    transition: text-decoration 0.2s ease;
   }
-  
-  .text-container button:hover {
-    filter: brightness(0.9); /* Subtle hover effect */
+
+  .link:hover {
+    text-decoration: underline;
   }
-  </style>
-  
+
+  .button {
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .button:hover {
+    background-color: darken($buttonBgColor, 10%);
+  }
+}
+</style>
