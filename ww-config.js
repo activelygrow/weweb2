@@ -71,26 +71,26 @@ export default {
     },
     fontSize: {
       label: {
-        en: "Font Size (px)",
+        en: "Font Size",
       },
-      type: "Number",
-      defaultValue: 16,
+      type: "String", // Allows text input for values like "1rem" or "10px"
+      defaultValue: "16px",
       bindable: true,
     },
     buttonPaddingVertical: {
       label: {
-        en: "Button Vertical Padding (px)",
+        en: "Button Vertical Padding",
       },
-      type: "Number",
-      defaultValue: 8,
+      type: "String", // Allows text input
+      defaultValue: "8px",
       bindable: true,
     },
     buttonPaddingHorizontal: {
       label: {
-        en: "Button Horizontal Padding (px)",
+        en: "Button Horizontal Padding",
       },
-      type: "Number",
-      defaultValue: 16,
+      type: "String", // Allows text input
+      defaultValue: "16px",
       bindable: true,
     },
   },
