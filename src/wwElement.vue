@@ -5,7 +5,10 @@
         <!-- Handle text type -->
         <template v-if="item.type === 'text'">
           <span
-            :style="{ color: validateStyle(content.textColor, '#000000') }"
+            :style="{ 
+              color: validateStyle(content.textColor, '#000000'), 
+              fontWeight: validateStyle(content.fontWeight, '400') 
+            }"
           >
             {{ item.text }}
           </span>
@@ -17,7 +20,8 @@
             :href="validateStyle(item.linkTarget, '#')"
             :style="{ 
               color: validateStyle(content.linkColor, '#007BFF'), 
-              textUnderlineOffset: validateStyle(content.underlineDistance, '2px') 
+              textUnderlineOffset: validateStyle(content.underlineDistance, '2px'), 
+              fontWeight: validateStyle(content.fontWeight, '400') 
             }"
             class="link"
             target="_blank"
