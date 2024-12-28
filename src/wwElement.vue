@@ -4,7 +4,10 @@
       v-for="(item, index) in content.items"
       :key="index"
       class="inline-element"
-      :style="{ fontSize: validateStyle(content.fontSize, '16px') }"
+      :style="{ 
+        fontSize: validateStyle(content.fontSize, '16px'), 
+        fontWeight: validateStyle(content.fontWeight, '400') 
+      }"
     >
       <!-- Handle text type -->
       <template v-if="item.type === 'text'">
@@ -14,10 +17,14 @@
       <!-- Handle link type -->
       <template v-else-if="item.type === 'link'">
         <a
-          href="#"
-          :style="{ color: validateStyle(content.linkColor, '#007BFF') }"
+          :href="validateStyle(item.linkTarget, '#')"
+          :style="{ 
+            color: validateStyle(content.linkColor, '#007BFF'), 
+            textUnderlineOffset: validateStyle(content.underlineDistance, '2px') 
+          }"
           class="link"
-          @click.prevent
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {{ item.text }}
         </a>
