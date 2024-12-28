@@ -37,7 +37,7 @@ export default {
         },
       },
       defaultValue: [
-        { text: "This is a text", type: "text" },
+        { text: "This is text", type: "text" },
         { text: "This is a link", type: "link" },
         { text: "This is a button", type: "button" },
       ],
