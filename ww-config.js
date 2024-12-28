@@ -19,7 +19,6 @@ export default {
             },
             type: "String",
             defaultValue: "Default text",
-            bindable: true,
           },
           type: {
             label: {
@@ -34,24 +33,18 @@ export default {
               ],
             },
             defaultValue: "text",
-            bindable: true,
           },
           linkTarget: {
             label: {
-              en: "Link Target (for links)",
+              en: "Link Target",
             },
             type: "String",
-            defaultValue: "#", // Default empty target
-            bindable: true,
+            defaultValue: "#",
           },
         },
       },
-      bindable: false,
-      defaultValue: [
-        { text: "This is text", type: "text" },
-        { text: "This is a link", type: "link", linkTarget: "https://example.com" },
-        { text: "This is a button", type: "button" },
-      ],
+      bindable: true, // Allows the entire array to be bound dynamically
+      defaultValue: [], // Start with an empty array
     },
     linkColor: {
       label: {
@@ -95,7 +88,7 @@ export default {
     },
     underlineDistance: {
       label: {
-        en: "Underline Distance (for links)",
+        en: "Underline Distance",
       },
       type: "String",
       defaultValue: "2px",
