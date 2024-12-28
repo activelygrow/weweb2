@@ -3,14 +3,14 @@
     <span v-for="(item, index) in content.items" :key="index" class="inline-element">
       <!-- Handle text type -->
       <template v-if="item.type === 'text'">
-        {{ item.text }}
+        <span :style="{ color: item.color }">{{ item.text }}</span>
       </template>
 
       <!-- Handle link type -->
       <template v-else-if="item.type === 'link'">
         <a
           href="#"
-          :style="{ color: content.linkColor }"
+          :style="{ color: item.color }"
           class="link"
           @click.prevent
         >
@@ -23,8 +23,8 @@
         <button
           type="button"
           :style="{
-            backgroundColor: content.buttonBgColor,
-            color: content.buttonTextColor,
+            backgroundColor: item.color,
+            color: '#FFFFFF', // Text color inside the button is always white
           }"
           class="button"
         >
