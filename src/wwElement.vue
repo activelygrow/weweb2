@@ -4,7 +4,7 @@
       v-for="(item, index) in content.items"
       :key="index"
       class="inline-element"
-      :style="{ fontSize: content.fontSize }"
+      :style="{ fontSize: validateStyle(content.fontSize, '16px') }"
     >
       <!-- Handle text type -->
       <template v-if="item.type === 'text'">
@@ -15,7 +15,7 @@
       <template v-else-if="item.type === 'link'">
         <a
           href="#"
-          :style="{ color: content.linkColor }"
+          :style="{ color: validateStyle(content.linkColor, '#007BFF') }"
           class="link"
           @click.prevent
         >
@@ -28,9 +28,9 @@
         <button
           type="button"
           :style="{
-            backgroundColor: content.buttonBgColor,
-            color: content.buttonTextColor,
-            padding: content.buttonPaddingVertical + ' ' + content.buttonPaddingHorizontal,
+            backgroundColor: validateStyle(content.buttonBgColor, '#F23636'),
+            color: validateStyle(content.buttonTextColor, '#FFFFFF'),
+            padding: validateStyle(content.buttonPaddingVertical, '8px') + ' ' + validateStyle(content.buttonPaddingHorizontal, '16px'),
           }"
           class="button"
         >
@@ -47,6 +47,12 @@ export default {
     content: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    // Validate styles to avoid crashes or undefined values
+    validateStyle(value, defaultValue) {
+      return value && typeof value === "string" ? value : defaultValue;
     },
   },
 };
