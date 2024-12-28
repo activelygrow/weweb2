@@ -29,21 +29,6 @@
           {{ item.text }}
         </a>
       </template>
-
-      <!-- Handle button type -->
-      <template v-else-if="item.type === 'button'">
-        <button
-          type="button"
-          :style="{
-            backgroundColor: validateStyle(content.buttonBgColor, '#F23636'),
-            color: validateStyle(content.buttonTextColor, '#FFFFFF'),
-            padding: validateStyle(content.buttonPaddingVertical, '8px') + ' ' + validateStyle(content.buttonPaddingHorizontal, '16px'),
-          }"
-          class="button"
-        >
-          {{ item.text }}
-        </button>
-      </template>
     </span>
   </div>
 </template>
@@ -69,11 +54,11 @@ export default {
 .my-element {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0; /* Remove unwanted spacing between elements */
 
   .inline-element {
-    display: inline-block;
-    margin-right: 8px;
+    display: inline; /* Ensure elements flow inline */
+    margin-right: 0; /* Remove additional margins */
   }
 
   .link {
@@ -84,6 +69,11 @@ export default {
 
   .link:hover {
     text-decoration: underline;
+  }
+
+  .link::after {
+    content: ''; /* Prevent any implicit spacing after links */
+    display: none;
   }
 
   .button {
