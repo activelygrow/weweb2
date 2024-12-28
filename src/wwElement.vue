@@ -1,7 +1,7 @@
 <template>
   <div class="my-element">
     <span
-      v-for="(item, index) in content.items"
+      v-for="(item, index) in content.items || []"
       :key="index"
       class="inline-element"
       :style="{ 
