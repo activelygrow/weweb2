@@ -5,10 +5,10 @@
       :key="index"
       class="inline-element"
       :style="{
-        fontWeight: content.fontWeight,
-        fontSize: content.fontSize + 'px',
-        letterSpacing: content.letterSpacing + 'px',
-        lineHeight: content.lineHeight,
+        fontWeight: content.fontWeight || 400,
+        fontSize: (content.fontSize || 16) + 'px',
+        letterSpacing: (content.letterSpacing || 0) + 'px',
+        lineHeight: content.lineHeight || 1.5,
       }"
     >
       <!-- Handle text type -->
@@ -21,8 +21,8 @@
         <a
           href="#"
           :style="{
-            color: content.linkColor,
-            textUnderlineOffset: content.underlineDistance + 'px',
+            color: content.linkColor || '#007BFF',
+            textUnderlineOffset: (content.underlineDistance || 2) + 'px',
           }"
           class="link"
           @click.prevent
@@ -36,9 +36,13 @@
         <button
           type="button"
           :style="{
-            backgroundColor: content.buttonBgColor,
-            color: content.buttonTextColor,
-            padding: content.buttonPadding.vertical + 'px ' + content.buttonPadding.horizontal + 'px',
+            backgroundColor: content.buttonBgColor || '#F23636',
+            color: content.buttonTextColor || '#FFFFFF',
+            padding:
+              (content.buttonPadding.vertical || 8) +
+              'px ' +
+              (content.buttonPadding.horizontal || 16) +
+              'px',
           }"
           class="button"
         >
