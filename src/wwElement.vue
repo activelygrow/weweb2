@@ -65,6 +65,7 @@ export default {
   text-decoration: none;
   cursor: pointer;
   transition: text-decoration 0.2s ease;
+  display: inline; /* Ensure links appear inline with other text */
 }
 
 .link:hover {
