@@ -19,7 +19,6 @@ export default {
             },
             type: "String",
             defaultValue: "Default text",
-            bindable: true, // Allow user to bind a formula or set text directly
           },
           type: {
             label: {
@@ -34,24 +33,35 @@ export default {
               ],
             },
             defaultValue: "text",
-            bindable: true, // Allow user to select type dynamically
-          },
-          color: {
-            label: {
-              en: "Color",
-            },
-            type: "Color",
-            defaultValue: "#000000", // Default color for text or button
-            bindable: true, // Allow user to change color dynamically
           },
         },
       },
-      bindable: true, // Make the entire items array bindable
       defaultValue: [
-        { text: "This is text", type: "text", color: "#000000" },
-        { text: "This is a link", type: "link", color: "#007BFF" },
-        { text: "This is a button", type: "button", color: "#F23636" },
+        { text: "This is text", type: "text" },
+        { text: "This is a link", type: "link" },
+        { text: "This is a button", type: "button" },
       ],
+    },
+    linkColor: {
+      label: {
+        en: "Link Color",
+      },
+      type: "Color",
+      defaultValue: "#007BFF",
+    },
+    buttonBgColor: {
+      label: {
+        en: "Button Background Color",
+      },
+      type: "Color",
+      defaultValue: "#F23636",
+    },
+    buttonTextColor: {
+      label: {
+        en: "Button Text Color",
+      },
+      type: "Color",
+      defaultValue: "#FFFFFF",
     },
   },
 };
