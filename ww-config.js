@@ -36,6 +36,7 @@ export default {
           },
         },
       },
+      bindable: true, // Allow formula binding for the array
       defaultValue: [
         { text: "This is text", type: "text" },
         { text: "This is a link", type: "link" },
@@ -48,6 +49,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#007BFF",
+      bindable: true, // Allow formula binding for the link color
     },
     buttonBgColor: {
       label: {
@@ -55,6 +57,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#F23636",
+      bindable: true, // Allow formula binding for the button background color
     },
     buttonTextColor: {
       label: {
@@ -62,6 +65,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#FFFFFF",
+      bindable: true, // Allow formula binding for the button text color
     },
   },
 };
