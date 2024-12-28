@@ -9,7 +9,7 @@ export default {
       label: {
         en: "Items",
       },
-      type: "Array", // Allows multiple objects in an array
+      type: "Array",
       itemType: {
         type: "Object",
         properties: {
@@ -18,14 +18,14 @@ export default {
               en: "Text",
             },
             type: "String",
-            defaultValue: "Default text", // Default value for new items
-            bindable: true, // Allow users to bind the text dynamically
+            defaultValue: "Default text",
+            bindable: true,
           },
           type: {
             label: {
               en: "Type",
             },
-            type: "Enum", // Dropdown to select between text, link, and button
+            type: "Enum",
             options: {
               choices: [
                 { value: "text", label: { en: "Text" } },
@@ -34,11 +34,11 @@ export default {
               ],
             },
             defaultValue: "text",
-            bindable: true, // Allow users to bind the type dynamically
+            bindable: true,
           },
         },
       },
-      bindable: true, // Allow binding of the entire items array
+      bindable: true,
       defaultValue: [
         { text: "This is text", type: "text" },
         { text: "This is a link", type: "link" },
@@ -51,7 +51,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#007BFF",
-      bindable: true, // Allow users to bind the link color dynamically
+      bindable: true,
     },
     buttonBgColor: {
       label: {
@@ -59,7 +59,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#F23636",
-      bindable: true, // Allow users to bind the button background color dynamically
+      bindable: true,
     },
     buttonTextColor: {
       label: {
@@ -67,7 +67,75 @@ export default {
       },
       type: "Color",
       defaultValue: "#FFFFFF",
-      bindable: true, // Allow users to bind the button text color dynamically
+      bindable: true,
+    },
+    fontWeight: {
+      label: {
+        en: "Font Weight",
+      },
+      type: "Number",
+      defaultValue: 400,
+      bindable: true,
+    },
+    fontSize: {
+      label: {
+        en: "Font Size (px)",
+      },
+      type: "Number",
+      defaultValue: 16,
+      bindable: true,
+    },
+    letterSpacing: {
+      label: {
+        en: "Letter Spacing (px)",
+      },
+      type: "Number",
+      defaultValue: 0,
+      bindable: true,
+    },
+    lineHeight: {
+      label: {
+        en: "Line Height",
+      },
+      type: "Number",
+      defaultValue: 1.5,
+      bindable: true,
+    },
+    underlineDistance: {
+      label: {
+        en: "Underline Distance (px)",
+      },
+      type: "Number",
+      defaultValue: 2,
+      bindable: true,
+    },
+    buttonPadding: {
+      label: {
+        en: "Button Padding (px)",
+      },
+      type: "Object",
+      properties: {
+        vertical: {
+          label: {
+            en: "Vertical Padding",
+          },
+          type: "Number",
+          defaultValue: 8,
+          bindable: true,
+        },
+        horizontal: {
+          label: {
+            en: "Horizontal Padding",
+          },
+          type: "Number",
+          defaultValue: 16,
+          bindable: true,
+        },
+      },
+      defaultValue: {
+        vertical: 8,
+        horizontal: 16,
+      },
     },
   },
 };
