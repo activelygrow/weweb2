@@ -9,7 +9,7 @@ export default {
       label: {
         en: "Items",
       },
-      type: "Array",
+      type: "Array", // Allows multiple objects in an array
       itemType: {
         type: "Object",
         properties: {
@@ -18,13 +18,14 @@ export default {
               en: "Text",
             },
             type: "String",
-            defaultValue: "Default text",
+            defaultValue: "Default text", // Default value for new items
+            bindable: true, // Allow users to bind the text dynamically
           },
           type: {
             label: {
               en: "Type",
             },
-            type: "Enum",
+            type: "Enum", // Dropdown to select between text, link, and button
             options: {
               choices: [
                 { value: "text", label: { en: "Text" } },
@@ -33,9 +34,11 @@ export default {
               ],
             },
             defaultValue: "text",
+            bindable: true, // Allow users to bind the type dynamically
           },
         },
       },
+      bindable: true, // Allow binding of the entire items array
       defaultValue: [
         { text: "This is text", type: "text" },
         { text: "This is a link", type: "link" },
@@ -48,6 +51,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#007BFF",
+      bindable: true, // Allow users to bind the link color dynamically
     },
     buttonBgColor: {
       label: {
@@ -55,6 +59,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#F23636",
+      bindable: true, // Allow users to bind the button background color dynamically
     },
     buttonTextColor: {
       label: {
@@ -62,6 +67,7 @@ export default {
       },
       type: "Color",
       defaultValue: "#FFFFFF",
+      bindable: true, // Allow users to bind the button text color dynamically
     },
   },
 };
