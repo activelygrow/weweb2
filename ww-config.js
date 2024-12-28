@@ -46,6 +46,14 @@ export default {
       bindable: true, // Allows the entire array to be bound dynamically
       defaultValue: [], // Start with an empty array
     },
+    textColor: {
+      label: {
+        en: "Text Color",
+      },
+      type: "Color",
+      defaultValue: "#000000", // Default to black text
+      bindable: true,
+    },
     linkColor: {
       label: {
         en: "Link Color",
