@@ -1,16 +1,15 @@
 <template>
   <div class="my-element">
     <span class="inline-paragraph">
-      <template v-for="(item, index) in content.items || []">
+      <template v-for="(item, index) in content.items || []" :key="index">
         <!-- Handle text type -->
         <template v-if="item.type === 'text'">
-          <span :key="'text-' + index">{{ item.text }}</span>
+          <span>{{ item.text }}</span>
         </template>
 
         <!-- Handle link type -->
         <template v-else-if="item.type === 'link'">
           <a
-            :key="'link-' + index"
             :href="validateStyle(item.linkTarget, '#')"
             :style="{ 
               color: validateStyle(content.linkColor, '#007BFF'), 
@@ -24,9 +23,9 @@
           </a>
         </template>
 
-        <!-- Add period directly after text or link without spaces -->
-        <template v-if="index < content.items.length - 1 && content.items[index + 1].text === '.'">
-          <span :key="'period-fix-' + index"></span>
+        <!-- Add space after the current element unless the next element is a period -->
+        <template v-if="index < content.items.length - 1 && content.items[index + 1].text !== '.'">
+          <span>&nbsp;</span>
         </template>
       </template>
     </span>
@@ -60,11 +59,6 @@ export default {
   white-space: normal; /* Allow wrapping within a paragraph */
   font-size: inherit;
   line-height: inherit;
-}
-
-.inline-element {
-  display: inline; /* Ensure elements flow inline */
-  margin-right: 0; /* Remove additional margins */
 }
 
 .link {
