@@ -24,7 +24,7 @@
         </template>
 
         <!-- Add space after the current element unless the next element is a period -->
-        <template v-if="index < content.items.length - 1 && content.items[index + 1].text !== '.'">
+        <!-- <template v-if="index < content.items.length - 1 && content.items[index + 1].text !== '.'"> -->
           <span>&nbsp;</span>
         </template>
       </template>
