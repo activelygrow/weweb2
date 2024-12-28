@@ -3,7 +3,7 @@
     <span v-for="(item, index) in content.items" :key="index" class="inline-element">
       <!-- Handle text type -->
       <template v-if="item.type === 'text'">
-        {{ item.text }}
+        <span>{{ item.text }}</span>
       </template>
 
       <!-- Handle link type -->
@@ -50,7 +50,7 @@ export default {
 .my-element {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px; /* Space between inline elements */
+  gap: 8px;
 
   .inline-element {
     display: inline-block;
