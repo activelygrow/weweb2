@@ -69,14 +69,6 @@ export default {
       defaultValue: "#FFFFFF",
       bindable: true,
     },
-    fontWeight: {
-      label: {
-        en: "Font Weight",
-      },
-      type: "Number",
-      defaultValue: 400,
-      bindable: true,
-    },
     fontSize: {
       label: {
         en: "Font Size (px)",
@@ -85,57 +77,21 @@ export default {
       defaultValue: 16,
       bindable: true,
     },
-    letterSpacing: {
+    buttonPaddingVertical: {
       label: {
-        en: "Letter Spacing (px)",
+        en: "Button Vertical Padding (px)",
       },
       type: "Number",
-      defaultValue: 0,
+      defaultValue: 8,
       bindable: true,
     },
-    lineHeight: {
+    buttonPaddingHorizontal: {
       label: {
-        en: "Line Height",
+        en: "Button Horizontal Padding (px)",
       },
       type: "Number",
-      defaultValue: 1.5,
+      defaultValue: 16,
       bindable: true,
-    },
-    underlineDistance: {
-      label: {
-        en: "Underline Distance (px)",
-      },
-      type: "Number",
-      defaultValue: 2,
-      bindable: true,
-    },
-    buttonPadding: {
-      label: {
-        en: "Button Padding (px)",
-      },
-      type: "Object",
-      properties: {
-        vertical: {
-          label: {
-            en: "Vertical Padding",
-          },
-          type: "Number",
-          defaultValue: 8,
-          bindable: true,
-        },
-        horizontal: {
-          label: {
-            en: "Horizontal Padding",
-          },
-          type: "Number",
-          defaultValue: 16,
-          bindable: true,
-        },
-      },
-      defaultValue: {
-        vertical: 8,
-        horizontal: 16,
-      },
     },
   },
 };
