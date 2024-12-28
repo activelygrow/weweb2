@@ -4,7 +4,7 @@
       v-for="(item, index) in content.items"
       :key="index"
       class="inline-element"
-      :style="{ fontSize: content.fontSize + 'px' }"
+      :style="{ fontSize: content.fontSize }"
     >
       <!-- Handle text type -->
       <template v-if="item.type === 'text'">
@@ -30,7 +30,7 @@
           :style="{
             backgroundColor: content.buttonBgColor,
             color: content.buttonTextColor,
-            padding: content.buttonPaddingVertical + 'px ' + content.buttonPaddingHorizontal + 'px',
+            padding: content.buttonPaddingVertical + ' ' + content.buttonPaddingHorizontal,
           }"
           class="button"
         >
