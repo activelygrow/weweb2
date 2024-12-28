@@ -30,6 +30,14 @@
         </a>
       </template>
     </span>
+
+    <!-- Adjust for periods to remove space before them -->
+    <span
+      v-if="index === content.items.length - 1 && item.text === '.'"
+      class="inline-period"
+    >
+      .
+    </span>
   </div>
 </template>
 
@@ -54,11 +62,16 @@ export default {
 .my-element {
   display: flex;
   flex-wrap: wrap;
-  gap: 0; /* Remove unwanted spacing between elements */
+  gap: 0; /* Ensure no unwanted spacing between elements */
 
   .inline-element {
     display: inline; /* Ensure elements flow inline */
     margin-right: 0; /* Remove additional margins */
+  }
+
+  .inline-period {
+    margin-left: -0.1em; /* Adjust spacing to align period tightly */
+    display: inline; /* Maintain inline behavior */
   }
 
   .link {
@@ -69,11 +82,6 @@ export default {
 
   .link:hover {
     text-decoration: underline;
-  }
-
-  .link::after {
-    content: ''; /* Prevent any implicit spacing after links */
-    display: none;
   }
 
   .button {
