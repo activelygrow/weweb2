@@ -36,12 +36,20 @@ export default {
             defaultValue: "text",
             bindable: true,
           },
+          linkTarget: {
+            label: {
+              en: "Link Target (for links)",
+            },
+            type: "String",
+            defaultValue: "#", // Default empty target
+            bindable: true,
+          },
         },
       },
-      bindable: false, // Prevent binding of the entire items array to avoid crashes
+      bindable: false,
       defaultValue: [
         { text: "This is text", type: "text" },
-        { text: "This is a link", type: "link" },
+        { text: "This is a link", type: "link", linkTarget: "https://example.com" },
         { text: "This is a button", type: "button" },
       ],
     },
@@ -73,15 +81,31 @@ export default {
       label: {
         en: "Font Size",
       },
-      type: "String", // Text input for values like "16px", "1rem"
+      type: "String",
       defaultValue: "16px",
+      bindable: true,
+    },
+    fontWeight: {
+      label: {
+        en: "Font Weight",
+      },
+      type: "String",
+      defaultValue: "400",
+      bindable: true,
+    },
+    underlineDistance: {
+      label: {
+        en: "Underline Distance (for links)",
+      },
+      type: "String",
+      defaultValue: "2px",
       bindable: true,
     },
     buttonPaddingVertical: {
       label: {
         en: "Button Vertical Padding",
       },
-      type: "String", // Text input
+      type: "String",
       defaultValue: "8px",
       bindable: true,
     },
@@ -89,7 +113,7 @@ export default {
       label: {
         en: "Button Horizontal Padding",
       },
-      type: "String", // Text input
+      type: "String",
       defaultValue: "16px",
       bindable: true,
     },
